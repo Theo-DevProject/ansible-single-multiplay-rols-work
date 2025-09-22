@@ -1,0 +1,37 @@
+---
+- name: Multi-platform web install (class spec)
+  hosts: all
+  become: true
+  tasks:
+    - name: Install httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_distribution == "Amazon" or ansible_facts['os_family'] == "RedHat"
+    - name: start httpd
+      ansible.builtin.service:
+        name: httpd
+        state: started
+      when: ansible_distribution == "Amazon" or ansible_facts['os_family'] == "RedHat"
+    - name: enable httpd
+      ansible.builtin.service:
+        name: httpd
+        enabled: yes
+      when: ansible_distribution == "Amazon" or ansible_facts['os_family'] == "RedHat"
+
+    - name: Install apache2
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+    - name: start apache2
+      ansible.builtin.service:
+        name: apache2
+        state: started
+      when: ansible_facts['os_family'] == "Debian"
+    - name: enable apache2
+      ansible.builtin.service:
+        name: apache2
+        enabled: yes
+      when: ansible_facts['os_family'] == "Debian"

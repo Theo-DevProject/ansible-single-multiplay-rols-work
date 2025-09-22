@@ -1,0 +1,19 @@
+---
+- name: Variables & loops demo
+  hosts: all
+  become: true
+  vars:
+    base_dir: /opt/demo
+    files: [app.cfg, db.cfg, web.cfg]
+  tasks:
+    - name: Create base dir
+      ansible.builtin.file:
+        path: "{{ base_dir }}"
+        state: directory
+        mode: '0755'
+    - name: Create config files
+      ansible.builtin.copy:
+        dest: "{{ base_dir }}/{{ item }}"
+        content: "# created {{ item }} on {{ inventory_hostname }}"
+        mode: '0644'
+      loop: "{{ files }}"

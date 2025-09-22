@@ -1,0 +1,2 @@
+---
+vhost_servername: "{{ inventory_hostname }}"

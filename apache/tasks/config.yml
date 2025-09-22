@@ -1,0 +1,13 @@
+---
+- name: Drop index file
+  ansible.builtin.copy:
+    src: index.html
+    dest: "{{ apache_docroot }}/index.html"
+    mode: '0644'
+
+- name: Render vhost template (RHEL family)
+  ansible.builtin.template:
+    src: vhost.j2
+    dest: /etc/httpd/conf.d/00-default.conf
+  when: apache_service == 'httpd'
+  notify: restart apache

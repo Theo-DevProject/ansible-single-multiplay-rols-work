@@ -1,0 +1,6 @@
+---
+galaxy_info:
+  author: class
+  description: Minimal Apache install/config role
+  license: MIT
+dependencies: []

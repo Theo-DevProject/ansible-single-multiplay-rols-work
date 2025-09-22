@@ -1,0 +1,14 @@
+---
+- name: Hello g1
+  hosts: g1
+  gather_facts: no
+  tasks:
+    - ansible.builtin.debug: msg="Hello g1"
+    - ansible.builtin.debug: msg="g1 reached"
+
+- name: Hello g2
+  hosts: g2
+  gather_facts: no
+  tasks:
+    - ansible.builtin.debug: msg="Hello g2"
+    - ansible.builtin.debug: msg="g2 reached"

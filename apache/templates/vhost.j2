@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+    ServerName {{ inventory_hostname }}
+    DocumentRoot {{ apache_docroot }}
+    <Directory "{{ apache_docroot }}">
+        AllowOverride None
+        Require all granted
+    </Directory>
+    ErrorLog logs/error_log
+    CustomLog logs/access_log combined
+</VirtualHost>

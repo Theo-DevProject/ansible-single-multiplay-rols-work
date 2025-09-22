@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>{{ site_title }}</title></head>
+<body>
+  <h1>{{ site_title }}</h1>
+  <ul>
+    <li>Host: {{ inventory_hostname }}</li>
+    <li>IP: {{ ansible_default_ipv4.address if ansible_default_ipv4 is defined }}</li>
+    <li>Distro: {{ ansible_distribution }} {{ ansible_distribution_version }}</li>
+    <li>Time: {{ ansible_date_time.iso8601 }}</li>
+  </ul>
+</body>
+</html>

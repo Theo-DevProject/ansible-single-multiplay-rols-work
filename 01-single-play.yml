@@ -1,0 +1,10 @@
+---
+- name: Single play – ping all
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Ping hosts
+      ansible.builtin.ping:
+    - name: Print distribution
+      ansible.builtin.debug:
+        msg: "This is {{ ansible_distribution }} {{ ansible_distribution_version }}"

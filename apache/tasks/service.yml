@@ -1,0 +1,6 @@
+---
+- name: Enable & start service
+  ansible.builtin.service:
+    name: "{{ apache_service }}"
+    state: started
+    enabled: yes

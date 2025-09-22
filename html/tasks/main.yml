@@ -1,0 +1,6 @@
+---
+- name: Deploy static HTML app
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/index.html"
+    dest: "/var/www/html/index.html"
+    mode: '0644'

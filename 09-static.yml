@@ -1,0 +1,12 @@
+---
+- name: Deploy static page
+  hosts: all
+  become: true
+  vars: { docroot: /var/www/html }
+  tasks:
+    - import_playbook: 03-httpd.yml
+    - name: Copy static page
+      ansible.builtin.copy:
+        src: ./static.html
+        dest: "{{ docroot }}/index.html"
+        mode: '0644'

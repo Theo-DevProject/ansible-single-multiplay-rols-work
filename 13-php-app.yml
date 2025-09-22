@@ -1,0 +1,7 @@
+---
+- name: Deploy PHP app via roles
+  hosts: all
+  become: true
+  roles:
+    - role: apache
+    - role: php

@@ -1,0 +1,12 @@
+---
+- name: Put site in maintenance mode
+  hosts: all
+  become: true
+  vars: { docroot: /var/www/html }
+  tasks:
+    - import_playbook: 03-httpd.yml
+    - name: Copy maintenance page
+      ansible.builtin.copy:
+        src: ./Maintenance.html
+        dest: "{{ docroot }}/index.html"
+        mode: '0644'
