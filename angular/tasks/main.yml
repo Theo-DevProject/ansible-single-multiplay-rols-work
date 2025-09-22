@@ -1,0 +1,12 @@
+---
+- name: Create Angular app directory
+  ansible.builtin.file:
+    path: /var/www/html/angular
+    state: directory
+    mode: '0755'
+
+- name: Deploy Angular-like index
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/index.html"
+    dest: /var/www/html/angular/index.html
+    mode: '0644'
